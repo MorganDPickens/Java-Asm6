@@ -1,0 +1,59 @@
+<!DOCTYPE html>                            <!--Morgan Pickens 07/09/2024 Assignemnt 2-->
+<html lang="en">
+<head>             <!--This section below creates our Boxes and Titles-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 Statistics Calculator</title>
+    <style> 
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }                  
+        label {
+            color: blue;
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body> 
+    <h1>Assignment 2 Statistics Calculator</h1>
+    <label for="game1">Game 1 Score (0-100):</label>
+    <input type="number" id="game1" min="0" max="100">
+    <label for="game2">Game 2 Score (0-100):</label>
+    <input type="number" id="game2" min="0" max="100">
+    <label for="game3">Game 3 Score (0-100):</label>
+    <input type="number" id="game3" min="0" max="100">
+    <button onclick="calculateAverage()">Calculate Average</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateAverage() {                    
+            // THis section is our java script this is to get our game scores.
+            let game1 = parseFloat(document.getElementById('game1').value);
+            let game2 = parseFloat(document.getElementById('game2').value);
+            let game3 = parseFloat(document.getElementById('game3').value);
+
+            // Im using this method to calculate the average of the scores.
+            let average = (game1 + game2 + game3) / 3;
+
+            // this will create the 70 top performer average
+            let threshold = 70;
+
+            // This takes our threshold variable and determines if the average meets the requirement
+            let isTopPerformer = average >= threshold;
+
+            // This is to display the results
+            let resultText = `Average Score: ${average.toFixed(1)}<br>`;
+            resultText += isTopPerformer ? "Top Performer: Yes" : "Top Performer: No";
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>
